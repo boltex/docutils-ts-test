@@ -12,6 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "docutils-ts": "^1.0.0"
+  },
   "devDependencies": {
     "typescript": "^5.8.3"
   }
