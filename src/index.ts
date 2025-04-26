@@ -1,3 +1,5 @@
+// All those import methods are equivalent
+
 // import * as docutils from 'docutils-ts';
 
 // import { get_language } from 'docutils-ts/languages';
@@ -18,5 +20,9 @@ console.log(html);
 
 // const lang = get_language('fr');
 // const lang = docutils.languages.get_language('fr');
-const lang = languages.get_language('fr');
+let lang = languages.get_language('ja');
+console.log(lang?.labels.note); // Should print the localized string for "note"
+lang = languages.get_language('en');
+console.log(lang?.labels.note); // Should print the localized string for "note"
+lang = languages.get_language('ko');
 console.log(lang?.labels.note); // Should print the localized string for "note"
