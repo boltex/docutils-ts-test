@@ -16,10 +16,12 @@ Some **bold** text and *italic* text.
 // const html = docutils.core.publish_string({ source: rst });
 const html = core.publish_string({ source: rst });
 
-console.log(html);
+console.log('Called publish_string: ', html);
+console.log();
 
 // const lang = get_language('fr');
 // const lang = docutils.languages.get_language('fr');
+console.log('Using get_language to output localized strings for "note":');
 let lang = languages.get_language('ja');
 console.log(lang?.labels.note); // Should print the localized string for "note"
 lang = languages.get_language('en');
