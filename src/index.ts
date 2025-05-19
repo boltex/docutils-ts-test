@@ -22,7 +22,9 @@ const html = await core.publish_string({
     writerName: 'html',
 });
 
-console.log('Called publish_string: ', html);
+console.log('\nCalled publish_string:\n');
+
+console.log(html.toString());
 console.log();
 
 // const lang = get_language('fr');
