@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "docutils-ts": "^1.0.3"
+    "docutils-ts": "^1.0.4"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
