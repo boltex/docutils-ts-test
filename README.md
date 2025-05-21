@@ -9,8 +9,8 @@ To experiment with the `docutils-ts` library using this project, follow these st
 1.  **Prerequisites:** Ensure you have [Node.js](https://nodejs.org/) installed on your system.
 2.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git # Replace with the actual URL of this project
-    cd your-repository-name # Replace with the name of the cloned directory
+    git clone https://github.com/boltex/docutils-ts-test.git
+    cd docutils-ts-test
     ```
 3.  **Install dependencies:** This command will install the `docutils-ts` library and other necessary TypeScript build tools.
     ```bash
