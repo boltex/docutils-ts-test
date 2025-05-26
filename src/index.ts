@@ -1,10 +1,10 @@
 // All those import methods are equivalent
 
 // import * as docutils from 'docutils-ts';
-
-// import { get_language } from 'docutils-ts/languages';
-
+// import { getLanguage } from 'docutils-ts/languages';
 import { core, languages } from 'docutils-ts';
+
+const getLanguage = languages.getLanguage;
 
 const rst = `
 My Header
@@ -13,7 +13,8 @@ My Header
 Some **bold** text and *italic* text.
 `;
 
-// const html = docutils.core.publish_string({ source: rst });
+// const html = await docutils.core.publish_string({ source: rst });
+
 const html = await core.publish_string({
     source: rst,
     readerName: 'standalone',
@@ -23,20 +24,15 @@ const html = await core.publish_string({
 });
 
 console.log('\nCalled publish_string:\n');
-
 console.log(html.toString());
-console.log();
 
-// const lang = get_language('fr');
-// const lang = docutils.languages.get_language('fr');
-console.log('Using get_language to output localized strings for "note":');
-
-const getLanguage = languages.getLanguage;
-// const get_language = languages.get_language;
+console.log('Using getLanguage to output localized strings for "note":');
 
 let lang = getLanguage('ja');
-console.log(lang?.labels.note); // Should print the localized string for "note"
+console.log(lang?.labels.note);
+
 lang = getLanguage('en');
-console.log(lang?.labels.note); // Should print the localized string for "note"
+console.log(lang?.labels.note);
+
 lang = getLanguage('ko');
-console.log(lang?.labels.note); // Should print the localized string for "note"
+console.log(lang?.labels.note);
