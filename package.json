@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "docutils-ts": "^1.0.6"
+    "docutils-ts": "^1.0.7"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
