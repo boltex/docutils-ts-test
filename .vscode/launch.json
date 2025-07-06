@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Javascript test",
             "skipFiles": [
                 "<node_internals>/**"
             ],
@@ -18,6 +18,24 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
+        },
+        {
+            "name": "Launch Python test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "index.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Both",
+            "configurations": [
+                "Launch Javascript test",
+                "Launch Python test"
+            ],
+            "stopAll": true
         }
     ]
 }
