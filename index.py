@@ -195,11 +195,77 @@ rstTest15 = '''My File Header
 
 Some **bold** text and *italic* text in a file.'''
 
+rstTest16 = '''Figure with caption and legend
+------------------------------
+
+.. _phase-diagram:
+
+.. figure:: images/phase_diagram.svg
+   :width: 70%
+   :align: center
+
+   Phase diagram of **H<sub>2</sub>O**.
+
+   This diagram shows the regions of solid, liquid, and vapor for water.  
+   The triple point is marked with a circle.
+'''
+
+rstTest17 = '''.. contents::
+   :depth: 2
+
+Section One
+===========
+
+Subsection A
+------------
+
+Section Two
+===========
+
+Subsection B
+------------
+'''
+
+rstTest18 = '''.. sectnum::
+
+Section One
+===========
+
+Subsection A
+------------
+'''
+
+rstTest19 = '''.. contents::
+   :depth: 2
+   :local:
+
+.. sectnum::
+   :depth: 2
+
+Section One
+===========
+
+Subsection A
+------------
+
+Section Two
+===========
+
+Subsection B
+------------
+'''
+
+rstTest20 = '''.. note::
+
+   This is a simple note admonition.
+
+.. admonition:: Reminder
+
+   Don't forget to test transforms!
+'''
+
 # allTests = [rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10, rstTest11, rstTest12, rstTest13, rstTest14, rstTest15]
-allTests = [rstTest14]
-            
-# Uncomment this to run only the first test
-# allTests = [rstTest1]
+allTests = [rstTest17]        
 
 testCounter = 0
 
@@ -213,17 +279,17 @@ def main():
     for rst in allTests:
         testCounter += 1
 
-        # pseudoxml = docutils.core.publish_string(source=rst, writer_name='pseudoxml')
-        # print('\nCalled publish_string:\n')
-        # filename = f"pseudo-py{testCounter}.txt"
-        # write_file(filename, pseudoxml.decode('utf-8'))
-        # print(f'\nWrote PSEUDOXML to {filename}\n')
+        pseudoxml = docutils.core.publish_string(source=rst, writer_name='pseudoxml')
+        print('\nCalled publish_string:\n')
+        filename = f"pseudo-py{testCounter}.txt"
+        write_file(filename, pseudoxml.decode('utf-8'))
+        print(f'\nWrote PSEUDOXML to {filename}\n')
 
-        # html = docutils.core.publish_string(source=rst, writer_name='html')
-        # print('\nCalled publish_string:\n')
-        # filename = f"html-py{testCounter}.html"
-        # write_file(filename, html.decode('utf-8'))
-        # print(f'\nWrote html to {filename}\n')
+        html = docutils.core.publish_string(source=rst, writer_name='html')
+        print('\nCalled publish_string:\n')
+        filename = f"html-py{testCounter}.html"
+        write_file(filename, html.decode('utf-8'))
+        print(f'\nWrote html to {filename}\n')
 
         xml = docutils.core.publish_string(source=rst, writer_name='xml')
         print('\nCalled publish_string:\n')

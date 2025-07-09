@@ -184,6 +184,7 @@ You can choose a dark theme:
    :scale: 40%
    :alt: Dark Main Window
 `;
+
 const rstTest15 = `My File Header
 ==============
 
@@ -204,14 +205,72 @@ const rstTest16 = `Figure with caption and legend
    The triple point is marked with a circle.
 `;
 
+const rstTest17 = `.. contents::
+   :depth: 2
+
+Section One
+===========
+
+Subsection A
+------------
+
+Section Two
+===========
+
+Subsection B
+------------
+`;
+
+const rstTest18 = `.. sectnum::
+
+Section One
+===========
+
+Subsection A
+------------
+`;
+
+const rstTest19 = `.. contents::
+   :depth: 2
+   :local:
+
+.. sectnum::
+   :depth: 2
+
+Section One
+===========
+
+Subsection A
+------------
+
+Section Two
+===========
+
+Subsection B
+------------
+`;
+
+const rstTest20 = `.. note::
+
+   This is a simple note admonition.
+
+.. admonition:: Reminder
+
+   Don't forget to test transforms!
+`;
+
 const allTests = [
-    // rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10,
-    // rstTest11,
-    // rstTest12,
-    // rstTest13,
-    // rstTest14,
-    // rstTest15,
-    rstTest16
+   // rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10,
+   // rstTest11,
+   // rstTest12,
+   // rstTest13,
+   // rstTest14,
+   // rstTest15,
+   // rstTest16,
+   rstTest17,
+   // rstTest18,
+   // rstTest19,
+   // rstTest20,
 ];
 // const allTests = [rstTest1];
 
@@ -219,44 +278,44 @@ let testCounter = 0;
 
 for (const rst of allTests) {
 
-    testCounter++;
+   testCounter++;
 
-    // const pseudoxml = await docutils.core.publish_string({ source: rst, writerName: 'pseudoxml' });
-    // console.log('\nCalled publish_string\n');
-    // await writeFile(`pseudo-ts${testCounter}.txt`, pseudoxml.toString());
-    // console.log(`\nWrote PSEUDOXML to pseudo-ts${testCounter}.txt\n`);
+   const pseudoxml = await docutils.core.publish_string({ source: rst, writerName: 'pseudoxml' });
+   console.log('\nCalled publish_string\n');
+   await writeFile(`pseudo-ts${testCounter}.txt`, pseudoxml.toString());
+   console.log(`\nWrote PSEUDOXML to pseudo-ts${testCounter}.txt\n`);
 
-    // const html = await docutils.core.publish_string({ source: rst, writerName: 'html' });
-    // console.log('\nCalled publish_string\n');
-    // await writeFile(`html-ts${testCounter}.html`, html.toString());
-    // console.log(`\nWrote html to html-ts${testCounter}.html\n`);
+   // const html = await docutils.core.publish_string({ source: rst, writerName: 'html' });
+   // console.log('\nCalled publish_string\n');
+   // await writeFile(`html-ts${testCounter}.html`, html.toString());
+   // console.log(`\nWrote html to html-ts${testCounter}.html\n`);
 
-    // const xml = await docutils.core.publish_string({ source: rst, writerName: 'xml' });
-    // console.log('\nCalled publish_string\n');
-    // await writeFile(`xml-ts${testCounter}.xml`, xml.toString());
-    // console.log(`\nWrote xml to xml-ts${testCounter}.xml\n`);
+   const xml = await docutils.core.publish_string({ source: rst, writerName: 'xml' });
+   console.log('\nCalled publish_string\n');
+   await writeFile(`xml-ts${testCounter}.xml`, xml.toString());
+   console.log(`\nWrote xml to xml-ts${testCounter}.xml\n`);
 
-    const pojo = await docutils.core.publish_string({ source: rst, writerName: 'pojo' });
-    console.log('\nCalled publish_string\n');
-    await writeFile(`pojo-ts${testCounter}.json`, pojo.toString());
-    console.log(`\nWrote pojo to pojo-ts${testCounter}.json\n`);
+   // const pojo = await docutils.core.publish_string({ source: rst, writerName: 'pojo' });
+   // console.log('\nCalled publish_string\n');
+   // await writeFile(`pojo-ts${testCounter}.json`, pojo.toString());
+   // console.log(`\nWrote pojo to pojo-ts${testCounter}.json\n`);
 
-    continue;
+   continue;
 
-    // Write the rst to a file
-    await writeFile(`myDocumentOriginal${testCounter}.txt`, rst);
+   // Write the rst to a file
+   await writeFile(`myDocumentOriginal${testCounter}.txt`, rst);
 
-    // Write the output to a file using docutils-ts
-    const commandts = `rst2pseudoxml myDocumentOriginal${testCounter}.txt pseudo-ts${testCounter}.txt`;
-    console.log(`Running commandts: ${commandts}\n`);
-    child_process.execSync(commandts, { stdio: 'inherit' });
+   // Write the output to a file using docutils-ts
+   const commandts = `rst2pseudoxml myDocumentOriginal${testCounter}.txt pseudo-ts${testCounter}.txt`;
+   console.log(`Running commandts: ${commandts}\n`);
+   child_process.execSync(commandts, { stdio: 'inherit' });
 
-    // continue; // Only run the TypeScript docutils test, skip the Python part for now
+   // continue; // Only run the TypeScript docutils test, skip the Python part for now
 
-    // Write the output to a file using Python docutils
-    const command = `rst2pseudoxml.py myDocumentOriginal${testCounter}.txt pseudo-py${testCounter}.txt`;
-    console.log(`Running command: ${command}\n`);
-    child_process.execSync(command, { stdio: 'inherit' });
+   // Write the output to a file using Python docutils
+   const command = `rst2pseudoxml.py myDocumentOriginal${testCounter}.txt pseudo-py${testCounter}.txt`;
+   console.log(`Running command: ${command}\n`);
+   child_process.execSync(command, { stdio: 'inherit' });
 
 }
 

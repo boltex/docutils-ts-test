@@ -1,0 +1,35 @@
+<document source="<string>">
+    <topic classes="contents" ids="contents" names="contents">
+        <title>
+            Contents
+        <bullet_list>
+            <list_item>
+                <paragraph>
+                    <reference ids="toc-entry-1" refid="section-one">
+                        Section One
+                <bullet_list>
+                    <list_item>
+                        <paragraph>
+                            <reference ids="toc-entry-2" refid="subsection-a">
+                                Subsection A
+            <list_item>
+                <paragraph>
+                    <reference ids="toc-entry-3" refid="section-two">
+                        Section Two
+                <bullet_list>
+                    <list_item>
+                        <paragraph>
+                            <reference ids="toc-entry-4" refid="subsection-b">
+                                Subsection B
+    <section ids="section-one" names="section\ one">
+        <title refid="toc-entry-1">
+            Section One
+        <section ids="subsection-a" names="subsection\ a">
+            <title refid="toc-entry-2">
+                Subsection A
+    <section ids="section-two" names="section\ two">
+        <title refid="toc-entry-3">
+            Section Two
+        <section ids="subsection-b" names="subsection\ b">
+            <title refid="toc-entry-4">
+                Subsection B
