@@ -259,7 +259,42 @@ const rstTest20 = `.. note::
    Don't forget to test transforms!
 `;
 
+const rstTest21 = `Here is a small code block::
+
+    print("Hello, world!")
+
+And some text after.
+`;
+
+const rstTest22 = `===============
+Docutils Sample
+===============
+
+This is a minimal reStructuredText file showing code usage.
+
+Inline code
+===========
+
+You can run \`\`python myscript.py\`\` to start the program.
+
+Literal code block
+==================
+
+Here is a small code block::
+
+    print("Hello, world!")
+
+Code block directive
+====================
+
+.. code-block:: python
+
+    for i in range(3):
+        print(i)
+`;
+
 const allTests = [
+   rstTest8,
    // rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10,
    // rstTest11,
    // rstTest12,
@@ -271,6 +306,8 @@ const allTests = [
    // rstTest18,
    // rstTest19,
    // rstTest20,
+   // rstTest21,
+   // rstTest22,
 ];
 // const allTests = [rstTest1];
 
@@ -290,10 +327,10 @@ for (const rst of allTests) {
    // await writeFile(`html-ts${testCounter}.html`, html.toString());
    // console.log(`\nWrote html to html-ts${testCounter}.html\n`);
 
-   const xml = await docutils.core.publish_string({ source: rst, writerName: 'xml' });
-   console.log('\nCalled publish_string\n');
-   await writeFile(`xml-ts${testCounter}.xml`, xml.toString());
-   console.log(`\nWrote xml to xml-ts${testCounter}.xml\n`);
+   // const xml = await docutils.core.publish_string({ source: rst, writerName: 'xml' });
+   // console.log('\nCalled publish_string\n');
+   // await writeFile(`xml-ts${testCounter}.xml`, xml.toString());
+   // console.log(`\nWrote xml to xml-ts${testCounter}.xml\n`);
 
    // const pojo = await docutils.core.publish_string({ source: rst, writerName: 'pojo' });
    // console.log('\nCalled publish_string\n');

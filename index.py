@@ -264,8 +264,43 @@ rstTest20 = '''.. note::
    Don't forget to test transforms!
 '''
 
+rstTest21 = '''Here is a small code block::
+
+    print("Hello, world!")
+
+And some text after.
+'''
+
+rstTest22 = '''===============
+Docutils Sample
+===============
+
+This is a minimal reStructuredText file showing code usage.
+
+Inline code
+===========
+
+You can run ``python myscript.py`` to start the program.
+
+Literal code block
+==================
+
+Here is a small code block::
+
+    print("Hello, world!")
+
+Code block directive
+====================
+
+.. code-block:: python
+
+    for i in range(3):
+        print(i)
+'''
+
 # allTests = [rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10, rstTest11, rstTest12, rstTest13, rstTest14, rstTest15]
-allTests = [rstTest17]        
+# allTests = [rstTest17]        
+allTests = [rstTest8, rstTest17]        # rstTest18, rstTest19, rstTest20, rstTest21, rstTest22
 
 testCounter = 0
 
@@ -291,11 +326,11 @@ def main():
         write_file(filename, html.decode('utf-8'))
         print(f'\nWrote html to {filename}\n')
 
-        xml = docutils.core.publish_string(source=rst, writer_name='xml')
-        print('\nCalled publish_string:\n')
-        filename = f"xml-py{testCounter}.xml"
-        write_file(filename, xml.decode('utf-8'))
-        print(f'\nWrote xml to {filename}\n')
+      #   xml = docutils.core.publish_string(source=rst, writer_name='xml')
+      #   print('\nCalled publish_string:\n')
+      #   filename = f"xml-py{testCounter}.xml"
+      #   write_file(filename, xml.decode('utf-8'))
+      #   print(f'\nWrote xml to {filename}\n')
 
 if __name__ == "__main__":
     main()
