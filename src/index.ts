@@ -293,8 +293,56 @@ Code block directive
         print(i)
 `;
 
+// Test simple table
+const rstTest23 = `===============
+Simple Table
+===============
+
++------------------------+------------+----------+----------+
+| Header row, column 1   | Header 2   | Header 3 | Header 4 |
+| (header rows optional) |            |          |          |
++========================+============+==========+==========+
+| body row 1, column 1   | column 2   | column 3 | column 4 |
++------------------------+------------+----------+----------+
+| body row 2             | Cells may span columns.          |
++------------------------+------------+---------------------+
+| body row 3             | Cells may  | - Table cells       |
++------------------------+ span rows. | - contain           |
+| body row 4             |            | - body elements.    |
++------------------------+------------+---------------------+
+`;
+
+const rstTest24 = `
+Block Quote Example
+===================
+
+Here’s a simple paragraph introducing a quote:
+
+    “Programs must be written for people to read, and only incidentally for machines to execute.”
+    — *Abelson & Sussman, Structure and Interpretation of Computer Programs*
+
+Another paragraph after the block quote.
+`;
+
+const rstTest25 = `Admonition Examples
+===================
+
+.. attention::
+
+   This feature is still experimental. Behavior may change in future releases.
+
+.. tip::
+
+   You can run the test suite with::
+
+      npm test
+
+   to verify your installation.
+`;
+
+
 const allTests = [
-   rstTest8,
+   // rstTest8,
    // rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10,
    // rstTest11,
    // rstTest12,
@@ -302,12 +350,15 @@ const allTests = [
    // rstTest14,
    // rstTest15,
    // rstTest16,
-   rstTest17,
+   // rstTest17,
    // rstTest18,
    // rstTest19,
    // rstTest20,
    // rstTest21,
    // rstTest22,
+   rstTest23,
+   // rstTest24,
+   // rstTest25
 ];
 // const allTests = [rstTest1];
 
@@ -317,24 +368,24 @@ for (const rst of allTests) {
 
    testCounter++;
 
-   const pseudoxml = await docutils.core.publish_string({ source: rst, writerName: 'pseudoxml' });
-   console.log('\nCalled publish_string\n');
-   await writeFile(`pseudo-ts${testCounter}.txt`, pseudoxml.toString());
-   console.log(`\nWrote PSEUDOXML to pseudo-ts${testCounter}.txt\n`);
-
-   // const html = await docutils.core.publish_string({ source: rst, writerName: 'html' });
+   // const pseudoxml = await docutils.core.publish_string({ source: rst, writerName: 'pseudoxml' });
    // console.log('\nCalled publish_string\n');
-   // await writeFile(`html-ts${testCounter}.html`, html.toString());
-   // console.log(`\nWrote html to html-ts${testCounter}.html\n`);
+   // await writeFile(`docutils-ts-output/pseudo-ts${testCounter}.txt`, pseudoxml.toString());
+   // console.log(`\nWrote PSEUDOXML to pseudo-ts${testCounter}.txt\n`);
+
+   const html = await docutils.core.publish_string({ source: rst, writerName: 'html' });
+   console.log('\nCalled publish_string\n');
+   await writeFile(`docutils-ts-output/html-ts${testCounter}.html`, html.toString());
+   console.log(`\nWrote html to html-ts${testCounter}.html\n`);
 
    // const xml = await docutils.core.publish_string({ source: rst, writerName: 'xml' });
    // console.log('\nCalled publish_string\n');
-   // await writeFile(`xml-ts${testCounter}.xml`, xml.toString());
+   // await writeFile(`docutils-ts-output/xml-ts${testCounter}.xml`, xml.toString());
    // console.log(`\nWrote xml to xml-ts${testCounter}.xml\n`);
 
    // const pojo = await docutils.core.publish_string({ source: rst, writerName: 'pojo' });
    // console.log('\nCalled publish_string\n');
-   // await writeFile(`pojo-ts${testCounter}.json`, pojo.toString());
+   // await writeFile(`docutils-ts-output/pojo-ts${testCounter}.json`, pojo.toString());
    // console.log(`\nWrote pojo to pojo-ts${testCounter}.json\n`);
 
    continue;

@@ -1,0 +1,68 @@
+<document ids="simple-table" names="simple\ table" source="<string>" title="Simple Table">
+    <title>
+        Simple Table
+    <table>
+        <tgroup cols="4">
+            <colspec colwidth="24">
+            <colspec colwidth="12">
+            <colspec colwidth="10">
+            <colspec colwidth="10">
+            <thead>
+                <row>
+                    <entry>
+                        <paragraph>
+                            Header row, column 1
+                            (header rows optional)
+                    <entry>
+                        <paragraph>
+                            Header 2
+                    <entry>
+                        <paragraph>
+                            Header 3
+                    <entry>
+                        <paragraph>
+                            Header 4
+            <tbody>
+                <row>
+                    <entry>
+                        <paragraph>
+                            body row 1, column 1
+                    <entry>
+                        <paragraph>
+                            column 2
+                    <entry>
+                        <paragraph>
+                            column 3
+                    <entry>
+                        <paragraph>
+                            column 4
+                <row>
+                    <entry>
+                        <paragraph>
+                            body row 2
+                    <entry morecols="2">
+                        <paragraph>
+                            Cells may span columns.
+                <row>
+                    <entry>
+                        <paragraph>
+                            body row 3
+                    <entry morerows="1">
+                        <paragraph>
+                            Cells may
+                            span rows.
+                    <entry morecols="1" morerows="1">
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>
+                                    Table cells
+                            <list_item>
+                                <paragraph>
+                                    contain
+                            <list_item>
+                                <paragraph>
+                                    body elements.
+                <row>
+                    <entry>
+                        <paragraph>
+                            body row 4

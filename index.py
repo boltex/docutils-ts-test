@@ -298,9 +298,59 @@ Code block directive
         print(i)
 '''
 
+
+# Test simple table
+rstTest23 = '''===============
+Simple Table
+===============
+
++------------------------+------------+----------+----------+
+| Header row, column 1   | Header 2   | Header 3 | Header 4 |
+| (header rows optional) |            |          |          |
++========================+============+==========+==========+
+| body row 1, column 1   | column 2   | column 3 | column 4 |
++------------------------+------------+----------+----------+
+| body row 2             | Cells may span columns.          |
++------------------------+------------+---------------------+
+| body row 3             | Cells may  | - Table cells       |
++------------------------+ span rows. | - contain           |
+| body row 4             |            | - body elements.    |
++------------------------+------------+---------------------+
+'''
+
+rstTest24 = '''
+Block Quote Example
+===================
+
+Here’s a simple paragraph introducing a quote:
+
+    “Programs must be written for people to read, and only incidentally for machines to execute.”
+    — *Abelson & Sussman, Structure and Interpretation of Computer Programs*
+
+Another paragraph after the block quote.
+'''
+
+rstTest25 = '''Admonition Examples
+===================
+
+.. attention::
+
+   This feature is still experimental. Behavior may change in future releases.
+
+.. tip::
+
+   You can run the test suite with::
+
+      npm test
+
+   to verify your installation.
+'''
+
+
+
 # allTests = [rstTest1, rstTest2, rstTest3, rstTest4, rstTest5, rstTest6, rstTest7, rstTest8, rstTest9, rstTest10, rstTest11, rstTest12, rstTest13, rstTest14, rstTest15]
 # allTests = [rstTest17]        
-allTests = [rstTest8, rstTest17]        # rstTest18, rstTest19, rstTest20, rstTest21, rstTest22
+allTests = [rstTest23]        # rstTest18, rstTest19, rstTest20, rstTest21, rstTest22
 
 testCounter = 0
 
@@ -314,21 +364,21 @@ def main():
     for rst in allTests:
         testCounter += 1
 
-        pseudoxml = docutils.core.publish_string(source=rst, writer_name='pseudoxml')
-        print('\nCalled publish_string:\n')
-        filename = f"pseudo-py{testCounter}.txt"
-        write_file(filename, pseudoxml.decode('utf-8'))
-        print(f'\nWrote PSEUDOXML to {filename}\n')
+      #   pseudoxml = docutils.core.publish_string(source=rst, writer_name='pseudoxml')
+      #   print('\nCalled publish_string:\n')
+      #   filename = f"docutils-output/pseudo-py{testCounter}.txt"
+      #   write_file(filename, pseudoxml.decode('utf-8'))
+      #   print(f'\nWrote PSEUDOXML to {filename}\n')
 
         html = docutils.core.publish_string(source=rst, writer_name='html')
         print('\nCalled publish_string:\n')
-        filename = f"html-py{testCounter}.html"
+        filename = f"docutils-output/html-py{testCounter}.html"
         write_file(filename, html.decode('utf-8'))
         print(f'\nWrote html to {filename}\n')
 
       #   xml = docutils.core.publish_string(source=rst, writer_name='xml')
       #   print('\nCalled publish_string:\n')
-      #   filename = f"xml-py{testCounter}.xml"
+      #   filename = f"docutils-output/xml-py{testCounter}.xml"
       #   write_file(filename, xml.decode('utf-8'))
       #   print(f'\nWrote xml to {filename}\n')
 
